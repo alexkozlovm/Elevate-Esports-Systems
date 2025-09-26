@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elevate Solutions — Roster</title>
+    <title>Elevate Solutions — Reports</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Inter -->
@@ -33,7 +33,7 @@
 </head>
 <body class="flex min-h-screen text-gray-300">
 
-    <!-- Sidebar Navigation -->
+    <!-- Sidebar -->
     <aside class="w-64 bg-gray-900 border-r border-gray-800 text-white flex flex-col p-4 fixed h-full">
         <div class="flex items-center mb-8">
             <svg class="h-8 w-8 mr-2 text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -48,13 +48,13 @@
                 </svg>
                 Dashboard
             </a>
-            <a href="roster.html" class="flex items-center py-2.5 px-4 rounded-lg bg-gray-800 text-blue-400 font-semibold">
+            <a href="roster.html" class="flex items-center py-2.5 px-4 rounded-lg hover:bg-gray-800 transition duration-200">
                 <svg class="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
                 Roster
             </a>
-            <a href="reports.html" class="flex items-center py-2.5 px-4 rounded-lg hover:bg-gray-800 transition duration-200">
+            <a href="reports.html" class="flex items-center py-2.5 px-4 rounded-lg bg-gray-800 text-blue-400 font-semibold transition duration-200">
                 <svg class="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
@@ -80,52 +80,55 @@
 
     <!-- Main Content -->
     <main class="flex-1 ml-64 p-6 md:p-8">
-        <header class="mb-4">
-            <h1 class="text-3xl font-bold text-white">Team Roster</h1>
-            <p class="text-gray-400">Current and past members of Elevate Solutions.</p>
+        <header class="mb-8">
+            <h1 class="text-3xl font-bold text-white">Analytics & Reports</h1>
+            <p class="text-gray-400">Generate and view detailed performance reports.</p>
         </header>
 
-         <!-- Preview Notice -->
+        <!-- Preview Notice -->
         <div class="bg-blue-900/50 border border-blue-700 text-blue-300 px-4 py-3 rounded-xl relative mb-8" role="alert">
           <strong class="font-bold">This is a preview!</strong>
           <span class="block sm:inline">The data shown is a demonstration of our powerful analytics technology.</span>
         </div>
 
-        <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
-            <!-- Current Pro Roster Table -->
-            <div class="xl:col-span-3 bg-gray-800 p-6 rounded-xl shadow-lg mb-6">
-                <h2 class="text-xl font-semibold text-gray-200 mb-4">Current Pro Roster</h2>
+        <!-- Report Sections -->
+        <div class="space-y-8">
+            <!-- Individual Player Reports -->
+            <div class="bg-gray-800 p-6 rounded-xl shadow-lg">
+                <h2 class="text-xl font-semibold text-gray-200 mb-4">Individual Player Reports</h2>
+                <p class="text-gray-400 mb-6">Download in-depth PDF reports for each player, detailing tournament performance, kill/death ratios, placement trends, and more.</p>
                 <div class="overflow-x-auto">
                     <table class="w-full text-left">
                         <thead>
                             <tr class="text-sm text-gray-400 border-b border-gray-700">
                                 <th class="py-3 px-4 font-medium">Player</th>
-                                <th class="py-3 px-4 font-medium">Member Since</th>
-                                <th class="py-3 px-4 font-medium">2025 PR Points</th>
-                                <th class="py-3 px-4 font-medium">Earnings</th>
+                                <th class="py-3 px-4 font-medium">Last Generated</th>
+                                <th class="py-3 px-4 font-medium text-right">Action</th>
                             </tr>
                         </thead>
-                        <tbody id="current-roster-body">
-                            <!-- Rows will be injected by JavaScript -->
+                        <tbody id="player-reports-body">
+                            <!-- Player rows will be injected by JS -->
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- Roster History Table -->
-            <div class="xl:col-span-3 bg-gray-800 p-6 rounded-xl shadow-lg">
-                <h2 class="text-xl font-semibold text-gray-200 mb-4">Roster History</h2>
+            <!-- Social Media Engagement Report -->
+             <div class="bg-gray-800 p-6 rounded-xl shadow-lg">
+                <h2 class="text-xl font-semibold text-gray-200 mb-4">Social Media Engagement</h2>
+                <p class="text-gray-400 mb-6">A summary of recent social media performance and engagement rates.</p>
                 <div class="overflow-x-auto">
                     <table class="w-full text-left">
                         <thead>
                             <tr class="text-sm text-gray-400 border-b border-gray-700">
-                                <th class="py-3 px-4 font-medium">Player</th>
-                                <th class="py-3 px-4 font-medium">Joined</th>
-                                <th class="py-3 px-4 font-medium">Left</th>
+                                <th class="py-3 px-4 font-medium">Post Content</th>
+                                <th class="py-3 px-4 font-medium">Platform</th>
+                                <th class="py-3 px-4 font-medium">Likes</th>
+                                <th class="py-3 px-4 font-medium">Engagement Rate</th>
                             </tr>
                         </thead>
-                        <tbody id="roster-history-body">
-                            <!-- Rows will be injected by JavaScript -->
+                        <tbody id="social-reports-body">
+                           <!-- Social media rows will be injected by JS -->
                         </tbody>
                     </table>
                 </div>
@@ -133,75 +136,7 @@
         </div>
     </main>
 
-    <script>
-        // --- SPREADSHEET DATA GOES HERE ---
-        const currentRosterData = [
-            { player: 'Slowly', joined: 'Nov 02, 2024', pr: 30409, earnings: 725, rank: 262, earningsRank: 5560 },
-            { player: 'Knacke', joined: 'Jun 11, 2025', pr: 27396, earnings: 600, rank: 299, earningsRank: 6197 },
-            { player: 'Ken', joined: 'Jun 06, 2025', pr: 22363, earnings: 1520, rank: 373, earningsRank: 2982 },
-            { player: 'PSY', joined: 'Dec 18, 2024', pr: 23643, earnings: 7070, rank: 347, earningsRank: 839 },
-            { player: 'Snyps', joined: 'Nov 07, 2024', pr: 16963, earnings: 660, rank: 505, earningsRank: 6014 },
-            { player: 'Tahy', joined: 'Jan 29, 2025', pr: 19996, earnings: 800, rank: 423, earningsRank: 4970 },
-            { player: 'Niqez', joined: 'Dec 18, 2024', pr: 16073, earnings: 725, rank: 535, earningsRank: 5560 }
-        ];
-
-        const rosterHistoryData = [
-            // Current Members
-            { player: 'Cloudz', joined: 'Sep 11, 2025', left: '-' },
-            { player: 'Arcs', joined: 'Aug 07, 2025', left: '-' },
-            { player: 'Bobby', joined: 'Jul 14, 2025', left: '-' },
-            { player: 'Kuza', joined: 'Jul 02, 2025', left: '-' },
-            { player: 'Joni', joined: 'Jun 21, 2025', left: '-' },
-            { player: 'Knacke', joined: 'Jun 11, 2025', left: '-' },
-            { player: 'Apollo', joined: 'Jun 08, 2025', left: '-' },
-            { player: 'Ken', joined: 'Jun 06, 2025', left: '-' },
-            // Past Members
-            { player: 'Stilian', joined: 'Dec 06, 2024', left: 'Jun 01, 2025' },
-            { player: 'Hadi', joined: 'Nov 16, 2024', left: 'Jun 01, 2025' },
-            { player: 'Raqe', joined: 'Nov 06, 2024', left: 'Jun 01, 2025' },
-            { player: 'Jackenni', joined: 'Nov 07, 2024', left: 'Mar 01, 2025' },
-            { player: 'prax', joined: 'Nov 15, 2024', left: 'Feb 13, 2025' },
-            { player: 'Triq', joined: 'Apr 10, 2023', left: 'Mar 01, 2024' },
-            { player: 'Maxi', joined: 'Dec 20, 2020', left: 'Feb 27, 2024' },
-            { player: 'Propz', joined: 'Sep 08, 2021', left: 'Feb 27, 2024' },
-            { player: 'AmoZz', joined: 'Mar 12, 2023', left: 'Feb 27, 2024' }
-        ];
-
-        // --- TABLE RENDERING LOGIC ---
-        // 1. Populate Current Roster Table
-        const currentRosterBody = document.getElementById('current-roster-body');
-        currentRosterData.forEach(player => {
-            const row = `
-                <tr class="border-b border-gray-700 hover:bg-gray-700/50">
-                    <td class="py-4 px-4 font-semibold text-gray-200">${player.player}</td>
-                    <td class="py-4 px-4">${player.joined}</td>
-                    <td class="py-4 px-4">
-                        <div class="font-bold text-blue-300">${player.pr.toLocaleString()}</div>
-                        <div class="text-xs text-gray-400">#${player.rank.toLocaleString()}</div>
-                    </td>
-                    <td class="py-4 px-4">
-                        <div class="font-bold text-green-400">$${player.earnings.toLocaleString()}</div>
-                         <div class="text-xs text-gray-400">#${player.earningsRank.toLocaleString()}</div>
-                    </td>
-                </tr>
-            `;
-            currentRosterBody.innerHTML += row;
-        });
-
-        // 2. Populate Roster History Table
-        const rosterHistoryBody = document.getElementById('roster-history-body');
-        rosterHistoryData.forEach(player => {
-            const leftDateClass = player.left === '-' ? 'text-green-400' : 'text-gray-400';
-            const row = `
-                <tr class="border-b border-gray-700 hover:bg-gray-700/50">
-                    <td class="py-3 px-4 font-semibold text-gray-200">${player.player}</td>
-                    <td class="py-3 px-4">${player.joined}</td>
-                    <td class="py-3 px-4 ${leftDateClass}">${player.left}</td>
-                </tr>
-            `;
-            rosterHistoryBody.innerHTML += row;
-        });
-    </script>
+    <script src="scripts/reports.js" defer></script>
 </body>
 </html>
 
