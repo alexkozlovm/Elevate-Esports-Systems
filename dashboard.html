@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevate Solutions — Dashboard</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* bg-gray-900 */
+        }
+        /* Custom scrollbar for a more modern look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1F2937; /* bg-gray-800 */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4B5563; /* bg-gray-600 */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6B7280; /* bg-gray-500 */
+        }
+        /* Chart.js responsive canvas */
+        .chart-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="flex min-h-screen text-gray-300">
+
+    <!-- Sidebar Navigation -->
+    <aside class="w-64 bg-gray-900 border-r border-gray-800 text-white flex flex-col p-4 fixed h-full">
+        <div class="flex items-center mb-8">
+            <svg class="h-8 w-8 mr-2 text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2
+ 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+            <h1 class="text-xl font-bold">Elevate Solutions</h1>
+        </div>
+        <nav class="flex-grow">
+            <a href="dashboard.html" class="flex items-center py-2.5 px-4 rounded-lg bg-gray-800 text-blue-400 font-semibold">
+                <svg class="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+                Dashboard
+            </a>
+            <a href="roster.html" class="flex items-center py-2.5 px-4 rounded-lg hover:bg-gray-800 transition duration-200">
+                <svg class="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                Roster
+            </a>
+            <a href="reports.html" class="flex items-center py-2.5 px-4 rounded-lg hover:bg-gray-800 transition duration-200">
+                <svg class="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Reports
+            </a>
+            <a href="settings.html" class="flex items-center py-2.5 px-4 rounded-lg hover:bg-gray-800 transition duration-200">
+                <svg class="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.096 2.572-1.065z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                Settings
+            </a>
+        </nav>
+        <div class="mt-auto">
+            <a href="index.html" class="flex items-center py-2.5 px-4 rounded-lg hover:bg-gray-800 transition duration-200">
+                <svg class="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+                </svg>
+                Go Back
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 ml-64 p-6 md:p-8">
+        <header class="mb-4">
+            <h1 class="text-3xl font-bold text-white">Team Performance Dashboard</h1>
+            <p class="text-gray-400">Overall team statistics and growth metrics.</p>
+        </header>
+
+         <!-- Preview Notice -->
+        <div class="bg-blue-900/50 border border-blue-700 text-blue-300 px-4 py-3 rounded-xl relative mb-8" role="alert">
+          <strong class="font-bold">This is a preview!</strong>
+          <span class="block sm:inline">The data shown is a demonstration of our powerful analytics technology.</span>
+        </div>
+
+        <!-- KPI Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="bg-gray-800 p-6 rounded-xl shadow-lg flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-gray-400">Twitter Followers</p>
+                    <p class="text-3xl font-bold text-white">42.1k</p>
+                    <p class="text-sm text-green-400">+2.3k this month</p>
+                </div>
+                 <div class="bg-blue-500/20 p-3 rounded-full">
+                    <svg class="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg>
+                </div>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-xl shadow-lg flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-gray-400">Average Team PR</p>
+                    <p class="text-3xl font-bold text-white">22,406</p>
+                    <p class="text-sm text-gray-400">Across 7 Pro Players</p>
+                </div>
+                 <div class="bg-yellow-500/20 p-3 rounded-full">
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
+                    </svg>
+                </div>
+            </div>
+             <div class="bg-gray-800 p-6 rounded-xl shadow-lg flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-gray-400">Total Season Earnings</p>
+                    <p class="text-3xl font-bold text-white">$12,100</p>
+                    <p class="text-sm text-green-400">Up 15% from last season</p>
+                </div>
+                 <div class="bg-green-500/20 p-3 rounded-full">
+                   <svg class="h-6 w-6 text-green-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                </div>
+            </div>
+             <div class="bg-gray-800 p-6 rounded-xl shadow-lg flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-gray-400">Discord Members</p>
+                    <p class="text-3xl font-bold text-white">6,104</p>
+                    <p class="text-sm text-green-400">+250 this month</p>
+                </div>
+                 <div class="bg-indigo-500/20 p-3 rounded-full">
+                    <svg class="h-6 w-6 text-indigo-400" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4464.8245-.6667 1.2882-1.8325-.3753-3.68-.3753-5.5127 0-.2203-.4637-.4557-.9129-.6667-1.2882a.077.077 0 00-.0785-.0371 19.74 19.74 0 00-4.8851 1.5152.069.069 0 00-.0321.0256C.7634 8.7187-1.1685 18.0076 2.4558 22.6386a.08.08 0 00.0883.0444c1.1488-.3418 2.2535-.7447 3.308-1.1944a.0777.0777 0 00.0444-.0592c-.3418-.7002-.63-1.4425-.8751-2.2279a.0741.0741 0 00-.0256-.0444c-1.0847-.656-2.1068-1.341-3.0318-2.1265a.0741.0741 0 00-.0883-.0189c-.2898.1257-.5643.2702-.8233.4293a.0741.0741 0 00-.0224.0849c.6833 2.1314 2.1068 3.9999 4.0243 5.4283a.077.077 0 00.0883.0037c.48-.204.944-.4117 1.3927-.626a.079.079 0 00.0321-.077c-.0256-.118-.0513-.236-.077-.354a.077.077 0 00-.0849-.0625c-1.0255.263-2.095.4293-3.18.512a.077.077 0 00-.0625.0812c.0037.0513.0075.1025.0112.1537a.077.077 0 00.077.0625c2.9325-.189 5.865-.189 8.7975 0a.077.077 0 00.077-.0625c.0037-.0512.0075-.1024.0112-.1536a.077.077 0 00-.0625-.0812c-1.0847-.0828-2.1542-.2492-3.18-.512a.077.077 0 00-.0849.0625c-.0256.118-.0513-.236-.077.354a.079.079 0 00.0321.077c.4487.2144.9127.4221 1.3927.626a.077.077 0 00.0883-.0037c1.9175-1.4284 3.3409-3.2969 4.0243-5.4283a.0741.0741 0 00-.0224-.0849c-.259-.1591-.5335-.3036-.8233-.4293a.0741.0741 0 00-.0883.0189c-.925.7855-1.9471 1.4705-3.0318 2.1265a.0741.0741 0 00-.0256.0444c-.2451.7854-.5335 1.5277-.8751 2.2279a.0777.0777 0 00.0444.0592c1.0545.45 2.1592.8529 3.308 1.1944a.08.08 0 00.0883-.0444C25.1664 18.0076 23.2344 8.7187 20.3491 4.3954a.069.069 0 00-.0321-.0256z"></path></svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts and Tables -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+            <!-- Social Media Growth (Line Chart) -->
+            <div class="lg:col-span-2 bg-gray-800 p-6 rounded-xl shadow-lg">
+                <h2 class="text-xl font-semibold text-gray-200 mb-4">Social Media Growth</h2>
+                <div class="chart-container">
+                    <canvas id="socialGrowthChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Tournament Placement Distribution (Doughnut Chart) -->
+            <div class="bg-gray-800 p-6 rounded-xl shadow-lg">
+                <h2 class="text-xl font-semibold text-gray-200 mb-4">Placement Distribution (Season)</h2>
+                <div class="chart-container">
+                    <canvas id="placementDistributionChart"></canvas>
+                </div>
+            </div>
+            
+            <!-- Current Pro Roster Table -->
+            <div class="lg:col-span-3 bg-gray-800 p-6 rounded-xl shadow-lg">
+                <h2 class="text-xl font-semibold text-gray-200 mb-4">Current Pro Roster</h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="text-sm text-gray-400 border-b border-gray-700">
+                                <th class="py-3 px-4 font-medium">Player</th>
+                                <th class="py-3 px-4 font-medium">Power Ranking</th>
+                                <th class="py-3 px-4 font-medium">Season Earnings</th>
+                            </tr>
+                        </thead>
+                        <tbody id="roster-table-body">
+                            <!-- Rows will be injected by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Team's Top Recent Placements Table -->
+            <div class="lg:col-span-3 bg-gray-800 p-6 rounded-xl shadow-lg">
+                <h2 class="text-xl font-semibold text-gray-200 mb-4">Team's Top Recent Placements</h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="text-sm text-gray-400 border-b border-gray-700">
+                                <th class="py-3 px-4 font-medium">Event</th>
+                                <th class="py-3 px-4 font-medium">Players</th>
+                                <th class="py-3 px-4 font-medium">Placement</th>
+                                <th class="py-3 px-4 font-medium">Earnings</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tournament-table-body">
+                            <!-- Rows will be injected by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // --- SPREADSHEET DATA GOES HERE ---
+        const socialGrowthData = {
+            labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep"],
+            twitter: [35.1, 36.5, 37.9, 38.8, 39.8, 42.1],
+            tiktok: [80.2, 83.6, 85.1, 88.9, 91.3, 93.1]
+        };
+
+        const placementDistributionData = {
+            labels: ["Top 1", "Top 10", "Top 25"],
+            data: [4, 18, 45]
+        };
+        
+        const rosterData = [
+            { player: 'Slowly', pr: 30409, earnings: 725 },
+            { player: 'Knacke', pr: 27396, earnings: 600 },
+            { player: 'Ken', pr: 22363, earnings: 1520 },
+            { player: 'PSY', pr: 23643, earnings: 7070 },
+            { player: 'Snyps', pr: 16963, earnings: 660 },
+            { player: 'Tahy', pr: 19996, earnings: 800 },
+            { player: 'Niqez', pr: 16073, earnings: 725 }
+        ];
+
+        const tournamentData = [
+            { event: 'FNCS Major 3: Grand Finals', players: 'PSY & Ken', placement: 2, earnings: '$7,000' },
+            { event: 'Solo Victory Cup', players: 'Ken', placement: 1, earnings: '$400' },
+            { event: 'Duos Cash Cup', players: 'Slowly & Knacke', placement: 5, earnings: '$800' },
+            { event: 'Lachlan Icon Cup', players: 'Tahy', placement: 9, earnings: '$200' },
+            { event: 'FNCS Community Cup', players: 'Snyps & Niqez', placement: 12, earnings: '$400' },
+        ];
+
+        // --- CHART AND TABLE RENDERING LOGIC ---
+        const textColor = '#9CA3AF'; // text-gray-400
+        const gridColor = 'rgba(255, 255, 255, 0.1)';
+
+        // 1. Render Social Media Growth Chart
+        const socialGrowthCtx = document.getElementById('socialGrowthChart').getContext('2d');
+        const socialGrowthChart = new Chart(socialGrowthCtx, {
+            type: 'line',
+            data: {
+                labels: socialGrowthData.labels,
+                datasets: [
+                    {
+                        label: 'Twitter (k)',
+                        data: socialGrowthData.twitter,
+                        backgroundColor: 'rgba(96, 165, 250, 0.2)',
+                        borderColor: 'rgba(96, 165, 250, 1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'TikTok (k)',
+                        data: socialGrowthData.tiktok,
+                        backgroundColor: 'rgba(139, 92, 246, 0.2)', // violet-500
+                        borderColor: 'rgba(139, 92, 246, 1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        grid: { color: gridColor, borderColor: 'transparent' },
+                        ticks: { color: textColor, callback: function(value) { return value + 'k'; } }
+                    },
+                    x: {
+                        grid: { color: gridColor, borderColor: 'transparent' },
+                        ticks: { color: textColor }
+                    }
+                },
+                plugins: {
+                    legend: { labels: { color: textColor } }
+                }
+            }
+        });
+
+        // 2. Render Placement Distribution Chart
+        const placementCtx = document.getElementById('placementDistributionChart').getContext('2d');
+        const placementChart = new Chart(placementCtx, {
+            type: 'doughnut',
+            data: {
+                labels: placementDistributionData.labels,
+                datasets: [{
+                    label: 'Placements',
+                    data: placementDistributionData.data,
+                    backgroundColor: ['#FBBF24', '#34D399', '#60A5FA'],
+                    borderColor: '#1F2937', // bg-gray-800
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: textColor }
+                    }
+                }
+            }
+        });
+        
+        // 3. Populate Roster Table
+        const rosterTableBody = document.getElementById('roster-table-body');
+        rosterData.forEach(player => {
+            const row = `
+                <tr class="border-b border-gray-700 hover:bg-gray-700/50">
+                    <td class="py-3 px-4 font-semibold text-gray-200">${player.player}</td>
+                    <td class="py-3 px-4 font-bold text-blue-300">${player.pr.toLocaleString()}</td>
+                    <td class="py-3 px-4 font-semibold text-green-400">$${player.earnings.toLocaleString()}</td>
+                </tr>
+            `;
+            rosterTableBody.innerHTML += row;
+        });
+
+        // 4. Populate Tournament Table
+        const tournamentTableBody = document.getElementById('tournament-table-body');
+        tournamentData.forEach(result => {
+             let placementClass = '';
+            if (result.placement <= 1) {
+                placementClass = 'bg-yellow-500/20 text-yellow-400 font-bold';
+            } else if (result.placement <= 10) {
+                placementClass = 'bg-green-500/20 text-green-400';
+            } else {
+                 placementClass = 'bg-gray-500/20 text-gray-400';
+            }
+
+            const row = `
+                <tr class="border-b border-gray-700 hover:bg-gray-700/50">
+                    <td class="py-3 px-4 font-semibold text-gray-200">${result.event}</td>
+                    <td class="py-3 px-4">${result.players}</td>
+                    <td class="py-3 px-4">
+                        <span class="px-2 py-1 text-xs font-medium rounded-full ${placementClass}">
+                            #${result.placement.toLocaleString()}
+                        </span>
+                    </td>
+                    <td class="py-3 px-4 font-bold text-green-400">${result.earnings}</td>
+                </tr>
+            `;
+            tournamentTableBody.innerHTML += row;
+        });
+
+    </script>
+</body>
+</html>
+

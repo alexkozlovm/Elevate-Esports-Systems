@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevate Solutions — Roster</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* bg-gray-900 */
+        }
+        /* Custom scrollbar for a more modern look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1F2937; /* bg-gray-800 */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4B5563; /* bg-gray-600 */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6B7280; /* bg-gray-500 */
+        }
+    </style>
+</head>
+<body class="flex min-h-screen text-gray-300">
+
+    <!-- Sidebar Navigation -->
+    <aside class="w-64 bg-gray-900 border-r border-gray-800 text-white flex flex-col p-4 fixed h-full">
+        <div class="flex items-center mb-8">
+            <svg class="h-8 w-8 mr-2 text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+            <h1 class="text-xl font-bold">Elevate Solutions</h1>
+        </div>
+        <nav class="flex-grow">
+            <a href="dashboard.html" class="flex items-center py-2.5 px-4 rounded-lg hover:bg-gray-800 transition duration-200">
+                <svg class="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+                Dashboard
+            </a>
+            <a href="roster.html" class="flex items-center py-2.5 px-4 rounded-lg bg-gray-800 text-blue-400 font-semibold">
+                <svg class="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                Roster
+            </a>
+            <a href="reports.html" class="flex items-center py-2.5 px-4 rounded-lg hover:bg-gray-800 transition duration-200">
+                <svg class="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Reports
+            </a>
+            <a href="settings.html" class="flex items-center py-2.5 px-4 rounded-lg hover:bg-gray-800 transition duration-200">
+                <svg class="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.096 2.572-1.065z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                Settings
+            </a>
+        </nav>
+        <div class="mt-auto">
+            <a href="index.html" class="flex items-center py-2.5 px-4 rounded-lg hover:bg-gray-800 transition duration-200">
+                <svg class="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+                </svg>
+                Go Back
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 ml-64 p-6 md:p-8">
+        <header class="mb-4">
+            <h1 class="text-3xl font-bold text-white">Team Roster</h1>
+            <p class="text-gray-400">Current and past members of Elevate Solutions.</p>
+        </header>
+
+         <!-- Preview Notice -->
+        <div class="bg-blue-900/50 border border-blue-700 text-blue-300 px-4 py-3 rounded-xl relative mb-8" role="alert">
+          <strong class="font-bold">This is a preview!</strong>
+          <span class="block sm:inline">The data shown is a demonstration of our powerful analytics technology.</span>
+        </div>
+
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+            <!-- Current Pro Roster Table -->
+            <div class="xl:col-span-3 bg-gray-800 p-6 rounded-xl shadow-lg mb-6">
+                <h2 class="text-xl font-semibold text-gray-200 mb-4">Current Pro Roster</h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="text-sm text-gray-400 border-b border-gray-700">
+                                <th class="py-3 px-4 font-medium">Player</th>
+                                <th class="py-3 px-4 font-medium">Member Since</th>
+                                <th class="py-3 px-4 font-medium">2025 PR Points</th>
+                                <th class="py-3 px-4 font-medium">Earnings</th>
+                            </tr>
+                        </thead>
+                        <tbody id="current-roster-body">
+                            <!-- Rows will be injected by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Roster History Table -->
+            <div class="xl:col-span-3 bg-gray-800 p-6 rounded-xl shadow-lg">
+                <h2 class="text-xl font-semibold text-gray-200 mb-4">Roster History</h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="text-sm text-gray-400 border-b border-gray-700">
+                                <th class="py-3 px-4 font-medium">Player</th>
+                                <th class="py-3 px-4 font-medium">Joined</th>
+                                <th class="py-3 px-4 font-medium">Left</th>
+                            </tr>
+                        </thead>
+                        <tbody id="roster-history-body">
+                            <!-- Rows will be injected by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // --- SPREADSHEET DATA GOES HERE ---
+        const currentRosterData = [
+            { player: 'Slowly', joined: 'Nov 02, 2024', pr: 30409, earnings: 725, rank: 262, earningsRank: 5560 },
+            { player: 'Knacke', joined: 'Jun 11, 2025', pr: 27396, earnings: 600, rank: 299, earningsRank: 6197 },
+            { player: 'Ken', joined: 'Jun 06, 2025', pr: 22363, earnings: 1520, rank: 373, earningsRank: 2982 },
+            { player: 'PSY', joined: 'Dec 18, 2024', pr: 23643, earnings: 7070, rank: 347, earningsRank: 839 },
+            { player: 'Snyps', joined: 'Nov 07, 2024', pr: 16963, earnings: 660, rank: 505, earningsRank: 6014 },
+            { player: 'Tahy', joined: 'Jan 29, 2025', pr: 19996, earnings: 800, rank: 423, earningsRank: 4970 },
+            { player: 'Niqez', joined: 'Dec 18, 2024', pr: 16073, earnings: 725, rank: 535, earningsRank: 5560 }
+        ];
+
+        const rosterHistoryData = [
+            // Current Members
+            { player: 'Cloudz', joined: 'Sep 11, 2025', left: '-' },
+            { player: 'Arcs', joined: 'Aug 07, 2025', left: '-' },
+            { player: 'Bobby', joined: 'Jul 14, 2025', left: '-' },
+            { player: 'Kuza', joined: 'Jul 02, 2025', left: '-' },
+            { player: 'Joni', joined: 'Jun 21, 2025', left: '-' },
+            { player: 'Knacke', joined: 'Jun 11, 2025', left: '-' },
+            { player: 'Apollo', joined: 'Jun 08, 2025', left: '-' },
+            { player: 'Ken', joined: 'Jun 06, 2025', left: '-' },
+            // Past Members
+            { player: 'Stilian', joined: 'Dec 06, 2024', left: 'Jun 01, 2025' },
+            { player: 'Hadi', joined: 'Nov 16, 2024', left: 'Jun 01, 2025' },
+            { player: 'Raqe', joined: 'Nov 06, 2024', left: 'Jun 01, 2025' },
+            { player: 'Jackenni', joined: 'Nov 07, 2024', left: 'Mar 01, 2025' },
+            { player: 'prax', joined: 'Nov 15, 2024', left: 'Feb 13, 2025' },
+            { player: 'Triq', joined: 'Apr 10, 2023', left: 'Mar 01, 2024' },
+            { player: 'Maxi', joined: 'Dec 20, 2020', left: 'Feb 27, 2024' },
+            { player: 'Propz', joined: 'Sep 08, 2021', left: 'Feb 27, 2024' },
+            { player: 'AmoZz', joined: 'Mar 12, 2023', left: 'Feb 27, 2024' }
+        ];
+
+        // --- TABLE RENDERING LOGIC ---
+        // 1. Populate Current Roster Table
+        const currentRosterBody = document.getElementById('current-roster-body');
+        currentRosterData.forEach(player => {
+            const row = `
+                <tr class="border-b border-gray-700 hover:bg-gray-700/50">
+                    <td class="py-4 px-4 font-semibold text-gray-200">${player.player}</td>
+                    <td class="py-4 px-4">${player.joined}</td>
+                    <td class="py-4 px-4">
+                        <div class="font-bold text-blue-300">${player.pr.toLocaleString()}</div>
+                        <div class="text-xs text-gray-400">#${player.rank.toLocaleString()}</div>
+                    </td>
+                    <td class="py-4 px-4">
+                        <div class="font-bold text-green-400">$${player.earnings.toLocaleString()}</div>
+                         <div class="text-xs text-gray-400">#${player.earningsRank.toLocaleString()}</div>
+                    </td>
+                </tr>
+            `;
+            currentRosterBody.innerHTML += row;
+        });
+
+        // 2. Populate Roster History Table
+        const rosterHistoryBody = document.getElementById('roster-history-body');
+        rosterHistoryData.forEach(player => {
+            const leftDateClass = player.left === '-' ? 'text-green-400' : 'text-gray-400';
+            const row = `
+                <tr class="border-b border-gray-700 hover:bg-gray-700/50">
+                    <td class="py-3 px-4 font-semibold text-gray-200">${player.player}</td>
+                    <td class="py-3 px-4">${player.joined}</td>
+                    <td class="py-3 px-4 ${leftDateClass}">${player.left}</td>
+                </tr>
+            `;
+            rosterHistoryBody.innerHTML += row;
+        });
+    </script>
+</body>
+</html>
+
